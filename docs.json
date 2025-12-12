@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "maple",     
+  "name": "BuidAI 文档",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,10 +11,10 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "指南",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "入门指南",
             "pages": [
               "index",
               "quickstart",
@@ -22,14 +22,14 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "自定义配置",
             "pages": [
               "essentials/settings",
               "essentials/navigation"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "内容编写",
             "pages": [
               "essentials/markdown",
               "essentials/code",
@@ -38,7 +38,7 @@
             ]
           },
           {
-            "group": "AI tools",
+            "group": "AI 工具",
             "pages": [
               "ai-tools/cursor",
               "ai-tools/claude-code",
@@ -48,16 +48,16 @@
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API 参考",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "API 文档",
             "pages": [
               "api-reference/introduction"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "端点示例",
             "pages": [
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
@@ -71,13 +71,18 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "官网",
+          "href": "https://buidai.com",
           "icon": "book-open-cover"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "anchor": "API",
+          "href": "https://buidai.com/docs",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "博客",
+          "href": "https://buidai.com/blog",
           "icon": "newspaper"
         }
       ]
@@ -90,13 +95,13 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
+        "label": "支持",
         "href": "mailto:hi@mintlify.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
+      "label": "控制台",
       "href": "https://dashboard.mintlify.com"
     }
   },

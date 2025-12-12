@@ -1,0 +1,9 @@
+/* 隐藏 Powered by Mintlify 链接 */
+footer a[href*="mintlify"] {
+    display: none !important;
+}
+
+/* 隐藏包含 Mintlify 文本的元素 */
+footer:has(a[href*="mintlify"]) {
+    display: none !important;
+}
