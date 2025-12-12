@@ -1,0 +1,180 @@
+---
+title: 技术工程使用场景
+description: 在技术工程和 AI 应用开发中集成 老张API 的完整指南
+---
+
+# 技术工程使用场景
+
+老张API 为技术工程和 AI 应用开发提供强大的后端支持，支持多种开发框架和平台。
+
+## 支持的技术工程平台
+
+### LangChain
+#### 集成指南
+LangChain 是一个流行的 AI 应用开发框架，支持 老张API 集成。
+
+**配置示例:**
+```python
+from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
+
+# 配置 LangChain 使用 老张API
+llm = OpenAI(
+    openai_api_base="https://api.laozhang.ai/v1",
+    openai_api_key="您的API密钥",
+    model_name="gpt-4"
+)
+
+# 或者使用 ChatOpenAI
+chat = ChatOpenAI(
+    openai_api_base="https://api.laozhang.ai/v1", 
+    openai_api_key="您的API密钥",
+    model_name="gpt-4"
+)
+```
+
+#### 高级用法
+```python
+# 构建复杂的链式操作
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+
+prompt = PromptTemplate(
+    input_variables=["product"],
+    template="为 {product} 写一个营销文案"
+)
+
+chain = LLMChain(llm=llm, prompt=prompt)
+result = chain.run("智能手表")
+```
+
+### Dify
+#### 平台集成
+Dify 是一个可视化 AI 应用开发平台，支持 老张API。
+
+**配置步骤:**
+1. 登录 Dify 控制台
+2. 进入模型供应商设置
+3. 添加自定义 OpenAI 兼容接口
+4. 配置参数：
+   - 接口地址: `https://api.laozhang.ai/v1`
+   - API 密钥: 您的 老张API 密钥
+   - 模型列表: 支持所有可用模型
+
+**环境变量配置:**
+```bash
+# Dify 部署配置
+export OPENAI_API_BASE=https://api.laozhang.ai/v1
+export OPENAI_API_KEY=您的API密钥
+```
+
+## 企业级集成
+
+### 微服务架构
+```python
+# FastAPI 集成示例
+from fastapi import FastAPI
+from openai import OpenAI
+
+app = FastAPI()
+
+# 初始化 老张API 客户端
+client = OpenAI(
+    base_url="https://api.laozhang.ai/v1",
+    api_key="您的API密钥"
+)
+
+@app.post("/chat")
+async def chat_endpoint(message: str):
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": message}]
+    )
+    return {"response": response.choices[0].message.content}
+```
+
+### 批量处理
+```python
+# 批量处理大量请求
+import asyncio
+from openai import AsyncOpenAI
+
+async_client = AsyncOpenAI(
+    base_url="https://api.laozhang.ai/v1",
+    api_key="您的API密钥"
+)
+
+async def batch_process(messages):
+    tasks = []
+    for message in messages:
+        task = async_client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": message}]
+        )
+        tasks.append(task)
+    
+    results = await asyncio.gather(*tasks)
+    return results
+```
+
+## 性能优化
+
+### 缓存策略
+```python
+from functools import lru_cache
+import openai
+
+openai.api_base = "https://api.laozhang.ai/v1"
+openai.api_key = "您的API密钥"
+
+@lru_cache(maxsize=100)
+def get_cached_response(prompt: str):
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+```
+
+### 速率限制处理
+```python
+import time
+from openai import RateLimitError
+
+def safe_api_call():
+    try:
+        response = client.chat.completions.create(...)
+        return response
+    except RateLimitError:
+        time.sleep(1)  # 等待1秒后重试
+        return safe_api_call()
+```
+
+## 监控和日志
+
+### 请求监控
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def monitored_chat(message):
+    start_time = time.time()
+    response = client.chat.completions.create(...)
+    end_time = time.time()
+    
+    logger.info(f"API调用耗时: {end_time - start_time:.2f}秒")
+    return response
+```
+
+## 最佳实践
+
+1. **连接池**: 使用连接池管理 API 连接
+2. **超时设置**: 配置合理的请求超时时间
+3. **重试机制**: 实现指数退避重试策略
+4. **性能监控**: 监控 API 调用性能和成功率
+
+## 技术支持
+
+需要帮助？查看我们的 [API 文档](/api/introduction) 或联系我们的技术团队。

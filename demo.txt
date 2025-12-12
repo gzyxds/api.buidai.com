@@ -1,164 +1,21 @@
-根据demo.txt的文案,替换到 index.mdx 写作样式保持官方的风格,
+在添加一个使用场景的分类， 写作样式保持官方的风格,
 
-5分钟在国内接入ChatGPT API - 快速开始教程
-详细教程教您如何在国内调用ChatGPT、Claude API，无需VPN，支持支付宝付款。
+#对话型 AI
+Cherry Studio国内ChatGPT使用配置指南
+Chatbox AI
+Open WebUI国内ChatGPT部署配置指南
+ChatGPT Next Web国内部署配置指南
 
-​
-🌟 开始之前
-很多开发者问我们：“在国内怎么用ChatGPT API？”
-答案很简单：不需要VPN，不需要国外信用卡，只需要： 1️⃣ 一个老张API账号（支付宝注册） 2️⃣ 一行代码修改（改个URL） 3️⃣ 五分钟配置（真的很快）
-本文会用最简单的方式，帮您实现：
-💳 用支付宝充值，人民币结算
-🌏 国内直连，无需代理
-⚡ 低延迟、高速度
-🔄 一键切换所有模型
-​
-第一步：5分钟注册并充值
-​
-📧 注册账号（免费送300万Token）
-1
-访问注册页面
+# 编程开发
+Cursor
+Cline
+Claude Code
+Codex CLI
 
-打开 老张API注册页
-🎁 新用户福利：注册即送300万Token测试额度
-2
-填写信息
+#技术工程
+LangChai
+Dify
 
-邮箱：任意邮箱即可
-密码：至少8位字符
-验证码：检查垃圾邮箱
-3
-登录控制台
-
-登录后进入控制台首页
-您会看到：
-账户余额（含赠送额度）
-使用统计
-快速入门指引
-​
-💰 快速充值（支付宝秒到账）
-支付宝扫码
-企业对公
-点击充值页面
-选择金额：
-🆕 5美元（体验版） = 35元
-🔥 20美元（常用） = 140元
-💰 100美元（赠送10%） = 700元得110美元
-支付宝扫码支付
-秒级到账，立即使用
-🎉 新人福利：
-注册送300万Token测试额度
-首充额外赠送（充100送额外的1美元）
-充值秒到账，无需等待
-微信：laozhangdaichong 领取首充赠送
-​
-第二步：1分钟获取API密钥
-​
-🔑 两种方式获取密钥
-使用默认密钥（推荐）
-创建新密钥
-进入令牌管理页
-找到默认令牌
-点击右侧复制按钮
-✅ 优点：立即可用，无需配置
-安全提醒：
-密钥只显示一次，请妥善保存
-不要提交到GitHub公开仓库
-建议使用环境变量存储
-​
-第三步：30秒完成首次调用
-​
-🎯 最简单的测试方法
-在线测试（推荐）
-命令行测试
-直接在控制台Playground测试：
-选择模型：gpt-4.1-mini
-输入提示词：“你好，请介绍一下你自己”
-点击发送
-✅ 免费测试额度可调用约4万次
-​
-🔧 接入配置信息
-记住这三个信息
-# API基础地址
-base_url: https://api.laozhang.ai/v1
-
-# API密钥（以sk-开头）
-api_key: sk-xxxxxxxxxxxxxx
-
-# 模型名称（即插即用）
-model: gpt-4.1-mini  # 或 claude-sonnet-4-20250514 等
-​
-💻 各语言完整示例
-Python（最常用）
-Node.js / TypeScript
-Curl / 命令行
-# 安装：pip install openai
-from openai import OpenAI
-
-# 初始化客户端
-client = OpenAI(
-    api_key="您的API密钥",  # 在老张API获取
-    base_url="https://api.laozhang.ai/v1"  # 国内直连地址
-)
-
-# 调用不同模型的示例
-def test_models():
-    models = [
-        "gpt-4.1-mini",  # 性价比最高
-        "claude-sonnet-4-20250514",  # 编程能力最强
-        "deepseek-v3"  # 国产最强
-    ]
-    
-    for model in models:
-        try:
-            response = client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": "你是一个友好的AI助手"},
-                    {"role": "user", "content": "用一句话介绍你自己"}
-                ],
-                temperature=0.7,
-                max_tokens=100
-            )
-            print(f"{model}: {response.choices[0].message.content}")
-            print(f"使用Token数: {response.usage.total_tokens}\n")
-        except Exception as e:
-            print(f"{model} 调用失败: {e}\n")
-
-if __name__ == "__main__":
-    test_models()
-最佳实践：使用环境变量存储API密钥
-import os
-client = OpenAI(
-    api_key=os.getenv("LAOZHANG_API_KEY"),
-    base_url="https://api.laozhang.ai/v1"
-)
-​
-下一步
-恭喜！您已经成功完成了 老张API 的接入。接下来您可以：
-查看 API 文档
-了解完整的 API 接口说明
-探索模型列表
-查看所有支持的 AI 模型
-集成到应用
-将 老张API 集成到各种工具
-查看使用统计
-在控制台监控使用情况
-​
-🔥 常见问题速查
-怎么判断接入成功？
-
-三个标志：
-✅ API调用返回正常结果（没有报错）
-✅ 响应时间低于1秒
-✅ 控制台能看到调用记录
-查看调用记录：使用日志
-怎么选择合适的模型？
-
-API密钥泄露了怎么办？
-
-为什么提示余额不足？
-
-支持哪些支付方式？
-
-提示：保存好您的 API 密钥，并定期在控制台查看使用日志，每笔请求都有消息历史，合理优化成本。 祝使用愉快~
+#翻译场景
+Bob 翻译
+沉浸式翻译

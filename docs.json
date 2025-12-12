@@ -70,6 +70,35 @@
             ]
           },
           {
+            "tab": "使用场景",
+            "groups": [
+              {
+                "group": "对话型 AI",
+                "pages": [
+                  "scenarios/chat-ai"
+                ]
+              },
+              {
+                "group": "编程开发",
+                "pages": [
+                  "scenarios/coding"
+                ]
+              },
+              {
+                "group": "技术工程",
+                "pages": [
+                  "scenarios/engineering"
+                ]
+              },
+              {
+                "group": "翻译场景",
+                "pages": [
+                  "scenarios/translation"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "API 参考",
             "groups": [
               {

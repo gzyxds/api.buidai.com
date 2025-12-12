@@ -1,0 +1,262 @@
+---
+title: 翻译场景使用指南
+description: 在各种翻译工具和平台中集成 老张API 实现高质量翻译功能
+---
+
+# 翻译场景使用指南
+
+老张API 为翻译工具提供强大的多语言翻译能力，支持高质量的文本翻译和本地化服务。
+
+## 支持的翻译工具
+
+### Bob 翻译
+#### 配置指南
+Bob 是一款流行的 macOS 翻译工具，支持 老张API 集成。
+
+**配置步骤:**
+1. 打开 Bob 设置（Preferences）
+2. 进入「服务」标签页
+3. 添加自定义翻译服务
+4. 配置参数：
+   - 名称: 老张API 翻译
+   - URL: `https://api.laozhang.ai/v1/chat/completions`
+   - 请求方法: POST
+   - Header: 
+     - `Content-Type: application/json`
+     - `Authorization: Bearer 您的API密钥`
+   - 请求体:
+     ```json
+     {
+       "model": "gpt-4",
+       "messages": [
+         {
+           "role": "system", 
+           "content": "你是一个专业翻译助手，请将内容翻译成目标语言"
+         },
+         {
+           "role": "user",
+           "content": "{{text}}"
+         }
+       ],
+       "temperature": 0.1
+     }
+     ```
+   - 结果路径: `choices[0].message.content`
+
+#### 高级配置
+对于特定语言对，可以优化系统提示词：
+
+```json
+{
+  "role": "system",
+  "content": "请将英文翻译成中文，保持专业和准确"
+}
+```
+
+### 沉浸式翻译
+#### 浏览器扩展配置
+沉浸式翻译支持 老张API 作为翻译引擎。
+
+**配置方法:**
+1. 安装沉浸式翻译扩展
+2. 打开扩展设置
+3. 选择「自定义翻译服务」
+4. 配置 老张API：
+   - 服务名称: 老张API
+   - API 地址: `https://api.laozhang.ai/v1/chat/completions`
+   - API 密钥: 您的密钥
+   - 模型: gpt-4
+   - 请求体模板:
+     ```json
+     {
+       "model": "gpt-4",
+       "messages": [
+         {
+           "role": "system",
+           "content": "请翻译以下文本，保持原文格式"
+         },
+         {
+           "role": "user", 
+           "content": "${text}"
+         }
+       ]
+     }
+     ```
+
+## 通用翻译 API 集成
+
+### REST API 调用示例
+```python
+import requests
+import json
+
+def translate_text(text, target_language="zh"):
+    url = "https://api.laozhang.ai/v1/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer 您的API密钥"
+    }
+    
+    payload = {
+        "model": "gpt-4",
+        "messages": [
+            {
+                "role": "system",
+                "content": f"请将文本翻译成{target_language}，保持专业准确"
+            },
+            {
+                "role": "user",
+                "content": text
+            }
+        ],
+        "temperature": 0.1
+    }
+    
+    response = requests.post(url, headers=headers, json=payload)
+    return response.json()["choices"][0]["message"]["content"]
+```
+
+### Python SDK 集成
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.laozhang.ai/v1",
+    api_key="您的API密钥"
+)
+
+def translate_with_context(text, source_lang, target_lang):
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": f"你是一名专业翻译，请将{source_lang}翻译成{target_lang}"
+            },
+            {
+                "role": "user",
+                "content": text
+            }
+        ],
+        temperature=0.1
+    )
+    return response.choices[0].message.content
+```
+
+## 高级翻译功能
+
+### 批量翻译
+```python
+import asyncio
+from openai import AsyncOpenAI
+
+async_client = AsyncOpenAI(
+    base_url="https://api.laozhang.ai/v1",
+    api_key="您的API密钥"
+)
+
+async def batch_translate(texts, target_lang):
+    tasks = []
+    for text in texts:
+        task = async_client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"翻译到{target_lang}"
+                },
+                {
+                    "role": "user", 
+                    "content": text
+                }
+            ]
+        )
+        tasks.append(task)
+    
+    results = await asyncio.gather(*tasks)
+    return [result.choices[0].message.content for result in results]
+```
+
+### 文档翻译
+```python
+def translate_document(document_path, target_language):
+    # 读取文档内容
+    with open(document_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # 分块处理大文档
+    chunks = split_into_chunks(content, max_length=2000)
+    
+    translated_chunks = []
+    for chunk in chunks:
+        translated = translate_text(chunk, target_language)
+        translated_chunks.append(translated)
+    
+    return ''.join(translated_chunks)
+```
+
+## 特色翻译模型
+
+### 专业领域翻译
+```python
+def legal_translation(text):
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system",
+                "content": "你是一名法律文档翻译专家，请准确翻译法律术语"
+            },
+            {
+                "role": "user",
+                "content": text
+            }
+        ]
+    )
+    return response.choices[0].message.content
+```
+
+### 技术文档翻译
+```python
+def technical_translation(text):
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {
+                "role": "system", 
+                "content": "你是一名技术文档翻译专家，请准确翻译技术术语和代码"
+            },
+            {
+                "role": "user",
+                "content": text
+            }
+        ]
+    )
+    return response.choices[0].message.content
+```
+
+## 最佳实践
+
+1. **术语一致性**: 使用相同的系统提示词保持翻译风格一致
+2. **批量处理**: 对于大量文本，使用异步请求提高效率
+3. **错误处理**: 实现重试机制处理网络波动
+4. **质量检查**: 对重要翻译进行人工审核
+
+## 支持的语言
+
+- 中文（简体和繁体）
+- 英语
+- 日语  
+- 韩语
+- 法语
+- 德语
+- 西班牙语
+- 及更多语言
+
+## 性能指标
+
+- 翻译速度: 平均响应时间 < 2秒
+- 准确率: 专业领域翻译准确率 > 95%
+- 可用性: 99.9% 服务可用性
+
+需要帮助？查看我们的 [API 文档](/api/introduction) 或联系支持团队。

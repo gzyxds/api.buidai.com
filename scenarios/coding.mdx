@@ -1,0 +1,107 @@
+---
+title: 编程开发使用场景
+description: 在各种编程开发工具中集成和使用 老张API 的完整指南
+---
+
+# 编程开发使用场景
+
+老张API 为开发者提供便捷的 AI 编程助手集成方案，支持多种开发工具和环境。
+
+## 支持的编程开发工具
+
+### Cursor
+#### 配置指南
+Cursor 是一款强大的 AI 代码编辑器，支持 老张API 集成。
+
+**配置步骤:**
+1. 打开 Cursor 设置（Ctrl+,）
+2. 进入 AI Provider 设置
+3. 选择 Custom OpenAI API
+4. 配置参数：
+   - API Base: `https://api.laozhang.ai/v1`
+   - API Key: 您的 老张API 密钥
+   - Model: 选择所需模型
+
+### Cline
+#### 终端集成
+Cline 是命令行 AI 助手，支持 老张API 配置。
+
+**环境变量配置:**
+```bash
+export OPENAI_API_BASE="https://api.laozhang.ai/v1"
+export OPENAI_API_KEY="您的API密钥"
+```
+
+**使用示例:**
+```bash
+cline "帮我写一个Python函数来处理JSON数据"
+```
+
+### Claude Code
+#### 开发助手配置
+Claude Code 专注于代码生成和解释。
+
+**配置方法:**
+```javascript
+// 在配置文件中设置
+const config = {
+  apiBase: 'https://api.laozhang.ai/v1',
+  apiKey: '您的API密钥',
+  model: 'claude-3-sonnet'
+};
+```
+
+### Codex CLI
+#### 命令行工具集成
+Codex CLI 提供命令行代码生成功能。
+
+**安装和配置:**
+```bash
+# 安装 codex-cli
+npm install -g codex-cli
+
+# 配置 老张API
+codex config set api-base https://api.laozhang.ai/v1
+codex config set api-key 您的API密钥
+```
+
+## SDK 集成示例
+
+### Python 集成
+```python
+import openai
+
+openai.api_base = "https://api.laozhang.ai/v1"
+openai.api_key = "您的API密钥"
+
+response = openai.ChatCompletion.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "写一个Python函数"}]
+)
+```
+
+### JavaScript 集成
+```javascript
+import OpenAI from 'openai';
+
+const openai = new OpenAI({
+  baseURL: 'https://api.laozhang.ai/v1',
+  apiKey: '您的API密钥',
+});
+
+const completion = await openai.chat.completions.create({
+  model: 'gpt-4',
+  messages: [{ role: 'user', content: '帮助我写代码' }],
+});
+```
+
+## 最佳实践
+
+1. **密钥安全**: 使用环境变量存储 API 密钥
+2. **错误处理**: 实现完整的错误处理和重试机制
+3. **速率限制**: 遵守 API 调用频率限制
+4. **模型选择**: 根据任务选择合适的模型
+
+## 技术支持
+
+遇到问题？查看我们的 [API 文档](/api/introduction) 或联系技术支持。
