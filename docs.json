@@ -1,17 +1,17 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",     
-  "name": "BuidAI 文档",
+  "theme": "mint",     
+  "name": "必定AI文档",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#2563EB",
+    "light": "#3B82F6",
+    "dark": "#1D4ED8"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "指南",
+        "tab": "首页",
         "groups": [
           {
             "group": "入门指南",
@@ -53,16 +53,16 @@
           {
             "group": "API 文档",
             "pages": [
-              "api-reference/introduction"
+              "api/introduction"
             ]
           },
           {
             "group": "端点示例",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api/endpoint/get",
+              "api/endpoint/create",
+              "api/endpoint/delete",
+              "api/endpoint/webhook"
             ]
           }
         ]
@@ -92,6 +92,7 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+
   "navbar": {
     "links": [
       {
