@@ -71,13 +71,15 @@
               }
             ]
           },
+          
           {
             "tab": "使用场景",
             "groups": [
               {
                 "group": "对话型 AI",
                 "pages": [
-                  "scenarios/chat-ai"
+                  "scenarios/chat-ai",
+                  "essentials/CherryStudio"
                 ]
               },
               {
