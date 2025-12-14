@@ -1,100 +1,417 @@
 ---
 title: "产品介绍"
 icon: 'gear'
-description: "BuidAPI,简称必定API为AI 应用打造一站式解决方案"
+description: "API易 - 企业级 AI 大模型 API 中转站，支持300+热门AI模型"
 ---
 
-BuidAPI是获得微软 Azure、AWS、GCP 官方授权的合规模型聚合平台。公司依托正规云服务额度和专业技术团队，长期为众多知名应用提供高并发、稳定、可信赖的 AI API 服务。
+API易 是企业级专业稳定的AI大模型API中转站，基于统一的OpenAI API标准，支持 300+热门AI模型。一个令牌，即可轻松调用OpenAI、Claude、Gemini、DeepSeek、Qwen、Kimi、GLM等所有主流大模型。
 
-平台基于统一的 OpenAI API 标准，聚合了 OpenAI 官方全系列模型与 Claude、Gemini、DeepSeek、阿里 Qwen 等主流大模型。开发者只需更改模型参数即可一键切换，无缝对接多家厂商，极大降低接入与运维成本。
-
-## 核心优势
+## 公司背景
 
 <Columns cols={2}>
   <Card
-    title="统一接口"
-    icon="code"
+    title="主体运营公司"
+    icon="building"
   >
-    兼容 OpenAI SDK，代码零改动即可平滑切换。
+    APIYI, LLC（美国）
   </Card>
   <Card
-    title="多云聚合"
-    icon="server"
+    title="官方资源合作"
+    icon="handshake"
   >
-    支持 OpenAI、Azure OpenAI 智能分流与内容审核，企业级稳定性。
-  </Card>
-  <Card
-    title="一站式能力"
-    icon="layer-group"
-  >
-    文本、图片生成、向量嵌入、TTS 等主流模型全覆盖。
-  </Card>
-  <Card
-    title="灵活计费"
-    icon="coins"
-  >
-    无会员、无包月，成本与业务同步增长，按量付费。
+    Google Vertex官方、微软Azure、亚马逊AWS（额度来源正规，放心使用）
   </Card>
 </Columns>
 
-## 快速上手
-
-<Card
-  title="开始接入"
-  icon="bolt"
-  href="/quickstart"
-  horizontal
->
-  充值 -> 创建 API Key -> 替换 API 地址 (https://aihubmix.com) -> 开始调用
-</Card>
-
-### 多端点支持说明
-
-BuidAI 会同时链接 OpenAI 官方和微软 Azure OpenAI 两个端点，并随机路由请求至 Azure 进行内容审核。相比 OpenAI 官方端，Azure OpenAI 自带自动内容过滤，所以响应速度可能略慢。
-
-<Warning>
-请注意合规：不要请求暴力、政治、色情等敏感内容。若账号频繁触发内容过滤，我们将进行统计并与您联系核实。
-</Warning>
-
-## 常用功能与场景
-
-<Columns cols={2}>
-  <Card
-    title="应用软件"
-    icon="robot"
-  >
-    支持 Lobe-chat、OpenAI Translator、Cursor、ChatX、Sider 等。
-  </Card>
-  <Card
-    title="产品开发"
-    icon="laptop-code"
-  >
-    完整支持 Langchain、LlamaIndex 等库，仅需替换 API 地址和 Key。
-  </Card>
-</Columns>
-
-## 服务特点
+### 服务保障
 
 <Columns cols={2}>
   <Card title="稳定" icon="shield-check">
-    技术团队持续迭代，保障系统高可用。
+    提供 OpenAI、Claude、Google Gemini 等主流模型的高并发和稳定服务
   </Card>
-  <Card title="方便" icon="hand-holding-heart">
-    与 OpenAI 官方 API 完全兼容，无缝切换。
+  <Card title="可信" icon="check-circle">
+    已有众多知名应用在生产环境中稳定接入，已合作知名高校、医院等单位
   </Card>
-  <Card title="快速" icon="gauge-high">
-    持续优化线路，保障访问与响应速度。
-  </Card>
-  <Card title="省心" icon="face-smile">
-    无包月、无会员，用多少买多少。
+  <Card title="合规" icon="file-contract">
+    国内主体可以对公支付，开具发票，协助提供采购清单等报销无忧
   </Card>
 </Columns>
+
+## 产品基础
+
+<Columns cols={2}>
+  <Card
+    title="快速开始"
+    icon="rocket"
+    href="/quickstart"
+  >
+    三步完成接入，立即开始使用 AI 模型
+  </Card>
+  <Card
+    title="API手册"
+    icon="book"
+    href="/api"
+  >
+    完整的接口文档和开发者指南
+  </Card>
+  <Card
+    title="网站公告"
+    icon="bullhorn"
+    href="/announcements"
+  >
+    最新模型上线、价格调整等重要更新
+  </Card>
+  <Card
+    title="定价信息"
+    icon="tags"
+    href="/pricing"
+  >
+    查看所有模型的详细定价和优惠信息
+  </Card>
+</Columns>
+
+## 核心接口
+
+<Columns cols={2}>
+  <Card
+    title="对话补全 API"
+    icon="comments"
+    href="/api/chat-completions"
+  >
+    Chat Completions - 创建多轮对话和文本生成
+  </Card>
+  <Card
+    title="模型列表 API"
+    icon="list"
+    href="/api/models"
+  >
+    Models API - 获取所有可用模型信息
+  </Card>
+  <Card
+    title="图像生成 API"
+    icon="image"
+    href="/api/images"
+  >
+    Images API - flux-kontext-pro、GPT-4o 图像生成
+  </Card>
+  <Card
+    title="嵌入向量 API"
+    icon="project-diagram"
+    href="/api/embeddings"
+  >
+    Embeddings API - 文本向量化和语义搜索
+  </Card>
+</Columns>
+
+## API 能力
+
+### 视频生成 API
+
+<Columns cols={2}>
+  <Card
+    title="Sora 2 视频生成"
+    icon="video"
+  >
+    音视频同步，无水印输出，$0.15/次起
+  </Card>
+  <Card
+    title="Sora 2 异步 API"
+    icon="sync"
+  >
+    异步调用模式，支持批量处理和后台任务
+  </Card>
+  <Card
+    title="VEO 视频生成"
+    icon="film"
+  >
+    谷歌最新视频生成模型，专业级视频创作
+  </Card>
+  <Card
+    title="视频理解 API"
+    icon="eye"
+  >
+    智能视频分析，场景识别、内容理解
+  </Card>
+</Columns>
+
+### 图像生成 API
+
+<Columns cols={2}>
+  <Card
+    title="Nano Banana Pro"
+    icon="image"
+  >
+    4K 高清，业界最佳文本渲染，$0.05/张
+  </Card>
+  <Card
+    title="Nano Banana 图像编辑"
+    icon="edit"
+  >
+    高级局部编辑，角度/焦点/色彩/光照调整
+  </Card>
+  <Card
+    title="Flux 图像生成"
+    icon="picture"
+  >
+    专业级图像生成，多种宽高比，官网88折
+  </Card>
+  <Card
+    title="SeeDream 4.0"
+    icon="star"
+  >
+    火山方舟官方合作，4K 高清，官网65折
+  </Card>
+</Columns>
+
+### 基础 API
+
+<Columns cols={2}>
+  <Card
+    title="模型信息"
+    icon="info-circle"
+    >
+    查看支持的 300+ AI 模型详细信息
+  </Card>
+  <Card
+    title="OpenAI SDK 接入"
+    icon="code"
+  >
+    使用官方 SDK 无缝接入 API易
+  </Card>
+  <Card
+    title="图像理解 API"
+    icon="search"
+  >
+    智能图像分析，OCR、对象识别、场景描述
+  </Card>
+  <Card
+    title="文本嵌入 API"
+    icon="database"
+  >
+    文本向量化和语义搜索
+  </Card>
+</Columns>
+
+## 使用场景
+
+### 对话型 AI
+
+<Columns cols={2}>
+  <Card
+    title="Cherry Studio"
+    icon="robot"
+  >
+    功能强大的 AI 对话客户端，支持多模型切换
+  </Card>
+  <Card
+    title="Chatbox"
+    icon="comment-dots"
+  >
+    跨平台桌面 AI 对话应用
+  </Card>
+  <Card
+    title="Open WebUI"
+    icon="window-restore"
+  >
+    自托管的 Web 对话界面
+  </Card>
+  <Card
+    title="ChatGPT Next Web"
+    icon="globe"
+  >
+    一键部署的网页版 ChatGPT
+  </Card>
+</Columns>
+
+### 编程开发
+
+<Columns cols={2}>
+  <Card
+    title="Claude Code"
+    icon="laptop-code"
+  >
+    Anthropic 官方 AI 编程助手
+  </Card>
+  <Card
+    title="Cursor"
+    icon="code"
+  >
+    AI 驱动的代码编辑器
+  </Card>
+  <Card
+    title="Cline (VS Code)"
+    icon="visual-studio-code"
+  >
+    VS Code 中的 AI 编程助手
+  </Card>
+  <Card
+    title="Roo Code"
+    icon="terminal"
+  >
+    高效的 AI 代码生成工具
+  </Card>
+</Columns>
+
+## 支持的模型
+
+### OpenAI 系列
+
+<Columns cols={2}>
+  <Card
+    title="GPT-5.1 全系列"
+    icon="brain"
+  >
+    最新迭代，智能与速度平衡
+  </Card>
+  <Card
+    title="o3 / o3 Pro / o4-mini"
+    icon="microchip"
+  >
+    推理模型
+  </Card>
+  <Card
+    title="GPT-4.1 / GPT-4o 系列"
+    icon="robot"
+  >
+    主流对话模型
+  </Card>
+  <Card
+    title="DALL·E 3 / GPT-Image-1"
+    icon="image"
+  >
+    图像生成模型
+  </Card>
+</Columns>
+
+### Anthropic 系列
+
+<Columns cols={2}>
+  <Card
+    title="Claude Opus 4.5"
+    icon="star"
+  >
+    最新旗舰，SWE-bench 80.9%
+  </Card>
+  <Card
+    title="Claude Sonnet 4.5"
+    icon="code"
+  >
+    世界级编码模型
+  </Card>
+  <Card
+    title="Claude Haiku 4.5"
+    icon="feather"
+  >
+    高性价比
+  </Card>
+  <Card
+    title="Claude 4 Sonnet / Opus"
+    icon="gem"
+  >
+    高级推理模型
+  </Card>
+</Columns>
+
+### Google 系列
+
+<Columns cols={2}>
+  <Card
+    title="Gemini 3 Pro Preview"
+    icon="google"
+  >
+    LMArena 全球第一
+  </Card>
+  <Card
+    title="Nano Banana Pro"
+    icon="image"
+  >
+    4K 高清图像生成
+  </Card>
+  <Card
+    title="Gemini 2.5 Pro"
+    icon="expand"
+  >
+    2M 上下文
+  </Card>
+  <Card
+    title="Gemini 2.5 Flash"
+    icon="bolt"
+  >
+    快速响应
+  </Card>
+</Columns>
+
+## 为什么选择 API易？
+
+### 一个接口，多种模型
+
+无需为每个 AI 服务单独申请账号和管理 API 密钥。通过 API易，您只需要：
+
+<Card
+  title="统一管理"
+  icon="cog"
+  horizontal
+>
+  一个账号：管理所有 AI 服务
+  一个 API 密钥：访问所有模型
+  一套接口标准：兼容 OpenAI API 格式
+</Card>
+
+### 简单易用
+
+切换模型就像修改一个参数一样简单：
+
+```python
+# 使用 GPT-4
+response = openai.ChatCompletion.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+
+# 切换到 Claude 3
+response = openai.ChatCompletion.create(
+    model="claude-3-opus-20240229",  # 只需修改模型名称
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+```
+
+### 核心特色
+
+<Columns cols={2}>
+  <Card title="最新模型" icon="star">
+    Claude Opus 4.5：SWE-bench 80.9%，编程能力登顶
+    Gemini 3 Pro Preview：LMArena 1501 Elo 全球第一
+  </Card>
+  <Card title="稳定可靠" icon="shield-alt">
+    官方合作伙伴资源，高性能基础架构支撑
+  </Card>
+  <Card title="极致性价比" icon="coins">
+    充值加赠活动：最高可达 8 折优惠
+    缓存优化：GPT-5.1 提示缓存节省 90% 成本
+  </Card>
+  <Card title="简单接入" icon="plug">
+    与 OpenAI 官方 API 完全兼容，无缝切换
+  </Card>
+</Columns>
+
+## 开始使用
+
+<Card
+  title="三步快速开始"
+  icon="rocket"
+  horizontal
+>
+  注册账号 -> 创建 API Key -> 接入使用
+</Card>
+
+注册即可获得300万Token免费测试额度，约可调用4o-mini模型进行充分测试。首次充值还可获得1美元额外赠送。
 
 ## 联系我们
 
 <Card
-  title="联系方式"
-  icon="envelope"
+  title="快速链接"
+  icon="link"
 >
-  商务合作：business@aihubmix.com | 意见反馈：feedback@aihubmix.com
+  <a href="https://apiyi.com/register">立即注册</a> | 
+  <a href="https://apiyi.com/dashboard">管理控制台</a>
 </Card>
