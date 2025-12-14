@@ -1,10 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-<<<<<<< HEAD
   "theme": "mint",     
-=======
-  "theme": "willow",     
->>>>>>> 7e6cfdd2273df70bbc3ea38057be1946f12ea2d4
   "name": "必定API文档_API对接_API中转站",
   "colors": {
     "primary": "#2563EB",
@@ -134,23 +130,14 @@
   "navbar": {
     "links": [
       {
-<<<<<<< HEAD
-        "label": "首页",
+        "label": "官网",
         "href": "https://api.buidai.com"
-=======
-        "label": "支持",
-        "href": "mailto:hi@mintlify.com"
->>>>>>> 7e6cfdd2273df70bbc3ea38057be1946f12ea2d4
       }
     ],
     "primary": {
       "type": "button",
       "label": "控制台",
-<<<<<<< HEAD
       "href": "https://api.buidai.com"
-=======
-      "href": "https://dashboard.mintlify.com"
->>>>>>> 7e6cfdd2273df70bbc3ea38057be1946f12ea2d4
     }
   },
   "contextual": {
