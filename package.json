@@ -1,0 +1,17 @@
+{
+  "name": "mintlify-docs",
+  "version": "1.0.0",
+  "description": "Documentation for BuidAI API",
+  "main": "index.mdx",
+  "scripts": {
+    "dev": "mint dev",
+    "start": "mint dev",
+    "build": "echo 'Mintlify documentation is hosted statically. No build step required for deployment.' && exit 0"
+  },
+  "devDependencies": {
+    "mint": "latest"
+  },
+  "engines": {
+    "node": ">=19.0.0"
+  }
+}
